@@ -1,19 +1,19 @@
-import { FaceFeature } from 'expo-face-detector';
+// FaceTracker stub - face-detector removed
 
-export type FaceData = FaceFeature;
+export type FaceData = any; // simplified placeholder
 
 export interface FaceTrackerConfig {
-    mode?: 'fast' | 'accurate';
-    detectLandmarks?: 'none' | 'all';
-    runClassifications?: 'none' | 'all';
-    minDetectionInterval?: number;
-    tracking?: boolean;
+  mode?: 'fast' | 'accurate';
+  detectLandmarks?: 'none' | 'all';
+  runClassifications?: 'none' | 'all';
+  minDetectionInterval?: number;
+  tracking?: boolean;
 }
 
 export const defaultFaceTrackerConfig: FaceTrackerConfig = {
-    mode: 'fast',
-    detectLandmarks: 'all',
-    runClassifications: 'all',
-    minDetectionInterval: 100,
-    tracking: true,
+  mode: 'fast',
+  detectLandmarks: 'none',
+  runClassifications: 'none',
+  minDetectionInterval: 100,
+  tracking: false,
 };

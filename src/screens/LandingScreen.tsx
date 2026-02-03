@@ -1,40 +1,34 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Dimensions, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
-interface LandingScreenProps {
-    onStartCamera: () => void;
-}
 
 const { width } = Dimensions.get('window');
 
-export default function LandingScreen({ onStartCamera }: LandingScreenProps) {
+export default function LandingScreen() {
+    const [clicked, setClicked] = useState(false);
+
     return (
         <View style={styles.container}>
             <View style={styles.contentContainer}>
                 <View style={styles.headerContainer}>
-                    <Text style={styles.title}>VIRTUAL</Text>
-                    <Text style={styles.subtitle}>Face Try-On</Text>
-                    <View style={styles.divider} />
+                    <Text style={styles.title}>Clean Camera App</Text>
                     <Text style={styles.description}>
-                        Experience your new look in real-time. Experiment with styles instantly.
+                        A minimal app: press the button below.
                     </Text>
                 </View>
 
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.primaryButton}
-                        onPress={onStartCamera}
+                        onPress={() => setClicked(true)}
                         activeOpacity={0.8}
                     >
-                        <Text style={styles.primaryButtonText}>OPEN CAMERA</Text>
+                        <Text style={styles.primaryButtonText}>CLICK ME</Text>
                     </TouchableOpacity>
+
+                    {clicked && <Text style={styles.clickedText}>Clicked</Text>}
                 </View>
             </View>
-
-            {/* Decorative Circles */}
-            <View style={[styles.circle, styles.circle1]} />
-            <View style={[styles.circle, styles.circle2]} />
 
             <StatusBar style="light" />
         </View>
@@ -127,5 +121,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#9013FE',
         bottom: -width * 0.3,
         left: -width * 0.2,
+    },
+    clickedText: {
+        color: '#fff',
+        marginTop: 16,
+        fontSize: 18,
+        fontWeight: '600',
     },
 });
